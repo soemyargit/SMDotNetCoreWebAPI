@@ -1,0 +1,6 @@
+@SMDotNetCoreADO_HostAddress = http://localhost:5183
+
+GET {{SMDotNetCoreADO_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
