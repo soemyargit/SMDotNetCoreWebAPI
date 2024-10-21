@@ -152,7 +152,6 @@ VALUES (@BlogTitle, @BlogAuthor, @BlogContent)";
                 {
                     dynamicParameters.Add("@BlogContent", requestModel.BlogContent);
                     conditions += "BlogContent = @BlogContent, ";
-
                 }
 
                 conditions = conditions.Substring(0, conditions.Length - 2);
