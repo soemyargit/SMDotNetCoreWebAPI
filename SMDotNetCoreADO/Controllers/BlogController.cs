@@ -10,9 +10,12 @@ namespace SMDotNetCoreADO.Controllers
     public class BlogController : ControllerBase
     {
         private readonly ADOService _aDOService;
-        public BlogController(ADOService aDOService)
+        private readonly AdoDotNetService _service;
+
+        public BlogController(ADOService aDOService, AdoDotNetService service)
         {
             _aDOService = aDOService;
+            _service = service;
         }
 
         #region HttpGet
