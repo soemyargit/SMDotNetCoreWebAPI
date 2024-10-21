@@ -62,5 +62,26 @@ namespace SMDotNetCoreADO.Services
                 throw;
             }
         }
+
+        public async Task<int> ExecuteAsync(string query, SqlParameter[] parameters)
+        {
+            try
+            {
+                SqlConnection connection = GetSqlConnection();
+                await connection.OpenAsync();
+
+                SqlCommand command = new(query, connection);
+                command.Parameters.AddRange(parameters);
+
+                int result = await command.ExecuteNonQueryAsync();
+                await connection.CloseAsync();
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }
