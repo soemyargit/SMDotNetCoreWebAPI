@@ -73,18 +73,13 @@ namespace SMDotNetCoreADO.Services
                     con.Open();
                     iResult = command.ExecuteNonQuery();
                     con.Close();
-
-
-                    
                 }
-
             }
+
             return iResult;
-
-
         }
-        #endregion
 
+        #endregion
 
         #region GetSqlConnection
         private SqlConnection GetSqlConnection() => new(DbConfig.DbConnection); //var SqlCon = new SqlConnection(DbConfig.DbConnection); return SqlCon; }

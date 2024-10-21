@@ -55,9 +55,8 @@ namespace SMDotNetCoreADO.Controllers
         {
             string sqlQuery = BlogQuery.CreateBlogQuery;
             int iResult = _aDOService.ExecuteNonQuery(sqlQuery, "", breqModel);
+
             return Ok(iResult);
-
-
         }
 
         #endregion
