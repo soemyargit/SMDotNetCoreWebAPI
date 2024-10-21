@@ -54,14 +54,13 @@ FROM Tbl_Blog";
                 string query = "SELECT BlogId, BlogTitle, BlogAuthor, BlogContent FROM Tbl_Blog WHERE BlogId = @BlogId";
                 using IDbConnection db = new SqlConnection(DbConfig.DbConnection);
                 var lst = await db.QueryFirstOrDefaultAsync<BlogModel>(query, new {BlogId = id});
-                return Ok(lst);
 
+                return Ok(lst);
             }
             catch(Exception ex) 
             { 
                 throw new Exception($"{ex.Message}");
             }
-            
         }
 
         [HttpPost]
