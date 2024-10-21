@@ -134,7 +134,6 @@ VALUES (@BlogTitle, @BlogAuthor, @BlogContent)";
                 dynamicParameters.Add("BlogId", id);
                 string conditions = string.Empty;
 
-
                 if (!string.IsNullOrEmpty(requestModel.BlogTitle))
                 {
                     dynamicParameters.Add("@BlogTitle", requestModel.BlogTitle);
@@ -163,12 +162,8 @@ VALUES (@BlogTitle, @BlogAuthor, @BlogContent)";
                 int result = await dbConnection.ExecuteAsync(query, dynamicParameters);
 
                 return result > 0 ? Ok("Updating Successful!") : BadRequest("Updating Fail!");
-
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
-
         }
-
-
     }
 }
