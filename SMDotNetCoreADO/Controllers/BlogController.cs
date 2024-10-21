@@ -64,28 +64,26 @@ namespace SMDotNetCoreADO.Controllers
         #region HttpPut
 
         [HttpPut]
-        public ActionResult UpdateBlog([FromBody] BlogRequestModel breqModel, int id)
+        public ActionResult UpdateBlog([FromBody] BlogRequestModel blogRequest, int id)
         {
             string sqlQuery = BlogQuery.UpdateBlogQuery;
-            int iResult = _aDOService.ExecuteNonQuery(sqlQuery, "", breqModel, id);
+            int iResult = _aDOService.ExecuteNonQuery(sqlQuery, "", blogRequest, id);
+
             return Ok(iResult);
-
-
         }
 
         #endregion
 
         #region HttpDelete
 
-        [HttpDelete]
-        public ActionResult DelteBlogById(int id)
+        [HttpDelete("{id}")]
+        public ActionResult DeleteBlog(int id)
         {
             string sqlQuery = BlogQuery.DeleteBlogQuery;
             BlogRequestModel breqModel = new BlogRequestModel();
             int iResult = _aDOService.ExecuteNonQuery(sqlQuery, "D", breqModel, id);
+
             return Ok(iResult);
-
-
         }
 
         #endregion
