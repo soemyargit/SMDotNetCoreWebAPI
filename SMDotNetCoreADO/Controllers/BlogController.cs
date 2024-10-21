@@ -90,8 +90,5 @@ namespace SMDotNetCoreADO.Controllers
         }
 
         #endregion
-
-
-
     }
 }
