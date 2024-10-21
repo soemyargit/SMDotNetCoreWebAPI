@@ -17,19 +17,19 @@ namespace SMDotNetCoreADO.Services
             _configuration = configuration;
         }
 
-      
+
 
         #region CmdExecuteReader
-        public List<BlogModel> cmdExecReader(string sqlQuery,int? id = null)
+        public List<BlogModel> cmdExecReader(string sqlQuery, int? id = null)
         {
             string connString = GetSqlConnectionString();
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 //SqlDataReader
-                connection.Open();                                
+                connection.Open();
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
                 List<BlogModel> lstBlogModel = new List<BlogModel>();
-                
+
 
                 using (SqlDataReader dataReader = command.ExecuteReader())
                 {
@@ -40,7 +40,7 @@ namespace SMDotNetCoreADO.Services
                         blog.BlogTitle = Convert.ToString(dataReader["BlogTitle"]);
                         blog.BlogAuthor = Convert.ToString(dataReader["BlogAuthor"]);
                         blog.BlogContent = Convert.ToString(dataReader["BlogContent"]);
-                        lstBlogModel.Add(blog);                        
+                        lstBlogModel.Add(blog);
                     }
                 }
                 connection.Close();
@@ -57,11 +57,11 @@ namespace SMDotNetCoreADO.Services
             string conString = GetSqlConnectionString();
             string sqlQueryString = string.Empty;
             int iResult = 0;
-            using (SqlConnection con = new SqlConnection(conString)) 
+            using (SqlConnection con = new SqlConnection(conString))
             {
                 using (SqlCommand command = new SqlCommand(sqlQueryString, con))
                 {
-                    command.CommandType =System.Data.CommandType.Text;
+                    command.CommandType = System.Data.CommandType.Text;
                     if (id != null) { command.Parameters.AddWithValue("@BlogId", SqlDbType.NVarChar).Value = id; }
                     if (strType != "D")
                     {
@@ -83,7 +83,7 @@ namespace SMDotNetCoreADO.Services
 
         #region GetSqlConnection
         private SqlConnection GetSqlConnection() => new(DbConfig.DbConnection); //var SqlCon = new SqlConnection(DbConfig.DbConnection); return SqlCon; }
-        
+
         private string GetSqlConnectionString() => new(DbConfig.DbConnection);
 
 
