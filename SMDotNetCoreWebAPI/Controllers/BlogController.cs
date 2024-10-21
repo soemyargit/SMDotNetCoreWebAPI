@@ -79,9 +79,8 @@ VALUES (@BlogTitle, @BlogAuthor, @BlogContent)";
 
                 using IDbConnection db = new SqlConnection(DbConfig.DbConnection);
                 var result = await db.ExecuteAsync(query, parameters);
+
                 return result > 0 ? Ok("Saving Successful") : BadRequest("Saving Fail");
-
-
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
