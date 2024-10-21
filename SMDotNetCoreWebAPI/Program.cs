@@ -1,3 +1,4 @@
+using SMDotNetCoreWebAPI.Dependencies;
 using SMDotNetCoreWebAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<DapperService>();
+
+builder.Services.AddDependencyInjection();
 
 var app = builder.Build();
 
