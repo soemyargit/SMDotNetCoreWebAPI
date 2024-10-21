@@ -32,8 +32,8 @@ namespace SMDotNetCoreWebAPI.Services
             { 
                 using IDbConnection dbConnection = GetSqlConnection();
                 var item = await dbConnection.QueryFirstOrDefaultAsync<T>(query, parameters, commandType: commandType); 
+
                 return item;
-                
             }
             catch(Exception ex) { throw; }  
         }
