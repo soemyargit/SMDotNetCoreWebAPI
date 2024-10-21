@@ -20,14 +20,14 @@ namespace SMDotNetCoreADO.Controllers
         [HttpGet]
         public ActionResult GetBlogModel()
         {
-            try 
+            try
             {
                 string sqlQuery = BlogQuery.GetBlogListQuery;
-                List<BlogModel>lstBlogModel = new List<BlogModel>();
+                List<BlogModel> lstBlogModel = new List<BlogModel>();
                 lstBlogModel = _aDOService.cmdExecReader(sqlQuery);
                 return Ok(lstBlogModel);
             }
-            catch(Exception ex) { throw new Exception(ex.Message); }
+            catch (Exception ex) { throw new Exception(ex.Message); }
         }
 
         #endregion
@@ -54,7 +54,7 @@ namespace SMDotNetCoreADO.Controllers
         public ActionResult CreateBlog([FromBody] BlogRequestModel breqModel)
         {
             string sqlQuery = BlogQuery.CreateBlogQuery;
-            int iResult = _aDOService.ExecuteNonQuery(sqlQuery,"", breqModel);
+            int iResult = _aDOService.ExecuteNonQuery(sqlQuery, "", breqModel);
             return Ok(iResult);
 
 
@@ -63,12 +63,12 @@ namespace SMDotNetCoreADO.Controllers
         #endregion
 
         #region HttpPut
-        
+
         [HttpPut]
-        public ActionResult UpdateBlog([FromBody] BlogRequestModel breqModel,int id)
+        public ActionResult UpdateBlog([FromBody] BlogRequestModel breqModel, int id)
         {
             string sqlQuery = BlogQuery.UpdateBlogQuery;
-            int iResult = _aDOService.ExecuteNonQuery(sqlQuery,"", breqModel,id);
+            int iResult = _aDOService.ExecuteNonQuery(sqlQuery, "", breqModel, id);
             return Ok(iResult);
 
 
@@ -82,8 +82,8 @@ namespace SMDotNetCoreADO.Controllers
         public ActionResult DelteBlogById(int id)
         {
             string sqlQuery = BlogQuery.DeleteBlogQuery;
-            BlogRequestModel breqModel = new BlogRequestModel();            
-            int iResult = _aDOService.ExecuteNonQuery(sqlQuery,"D",breqModel , id);
+            BlogRequestModel breqModel = new BlogRequestModel();
+            int iResult = _aDOService.ExecuteNonQuery(sqlQuery, "D", breqModel, id);
             return Ok(iResult);
 
 
