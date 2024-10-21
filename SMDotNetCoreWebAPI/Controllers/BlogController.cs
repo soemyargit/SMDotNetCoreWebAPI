@@ -47,18 +47,18 @@ FROM Tbl_Blog";
 
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetBlogByIDAsync(int id) 
+        public async Task<IActionResult> GetBlogByIDAsync(int id)
         {
-            try 
+            try
             {
                 string query = "SELECT BlogId, BlogTitle, BlogAuthor, BlogContent FROM Tbl_Blog WHERE BlogId = @BlogId";
                 using IDbConnection db = new SqlConnection(DbConfig.DbConnection);
-                var lst = await db.QueryFirstOrDefaultAsync<BlogModel>(query, new {BlogId = id});
+                var lst = await db.QueryFirstOrDefaultAsync<BlogModel>(query, new { BlogId = id });
 
                 return Ok(lst);
             }
-            catch(Exception ex) 
-            { 
+            catch (Exception ex)
+            {
                 throw new Exception($"{ex.Message}");
             }
         }
@@ -92,15 +92,16 @@ VALUES (@BlogTitle, @BlogAuthor, @BlogContent)";
                 string query = "DELETE FROM Tbl_Blog WHERE BlogId = @BlogId";
                 using IDbConnection dbCon = new SqlConnection(DbConfig.DbConnection);
                 var result = await dbCon.ExecuteAsync(query, new { BlogId = id });
+
                 return result > 0 ? Ok("Deleting Successful!") : BadRequest("Deleting Fail!");
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateBlogItemsAsync([FromBody] BlogRequestModel reqModel,int id)
+        public async Task<IActionResult> UpdateBlogItemsAsync([FromBody] BlogRequestModel reqModel, int id)
         {
-            try 
+            try
             {
                 string query = "UPDATE Tbl_Blog SET BlogTitle = @BlogTitle, BlogAuthor = @BlogAuthor WHERE BlogId = @BlogId";
                 var parameters = new
@@ -112,11 +113,12 @@ VALUES (@BlogTitle, @BlogAuthor, @BlogContent)";
                 };
                 using IDbConnection db = new SqlConnection(DbConfig.DbConnection);
                 var result = await db.ExecuteAsync(query, parameters);
-                return result > 0 ? Ok("Updated Successfully!") : BadRequest("Updating Failed!");
 
+                return result > 0 ? Ok("Updated Successfully!") : BadRequest("Updating Failed!");
             }
-            catch (Exception ex) { throw new Exception(ex.Message);
-            
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 
@@ -125,31 +127,31 @@ VALUES (@BlogTitle, @BlogAuthor, @BlogContent)";
         {
             try
             {
-                if(id <= 0)
+                if (id <= 0)
                 { return BadRequest("Id is invalid!"); }
 
-                DynamicParameters dynamicParameters = new DynamicParameters();  
+                DynamicParameters dynamicParameters = new DynamicParameters();
                 dynamicParameters.Add("BlogId", id);
-                string conditions = string.Empty;   
+                string conditions = string.Empty;
 
 
-                if(!string.IsNullOrEmpty(requestModel.BlogTitle))
-                { 
-                    dynamicParameters.Add("@BlogTitle",requestModel.BlogTitle);
+                if (!string.IsNullOrEmpty(requestModel.BlogTitle))
+                {
+                    dynamicParameters.Add("@BlogTitle", requestModel.BlogTitle);
                     conditions += "BlogTitle = @BlogTitle, ";
 
                 }
 
-                if(!string.IsNullOrEmpty(requestModel.BlogAuthor))
+                if (!string.IsNullOrEmpty(requestModel.BlogAuthor))
                 {
-                    dynamicParameters.Add("@BlogAuthor",requestModel.BlogAuthor);
+                    dynamicParameters.Add("@BlogAuthor", requestModel.BlogAuthor);
                     conditions += "BlogAuthor = @BlogAuthor, ";
 
                 }
 
                 if (!string.IsNullOrEmpty(requestModel.BlogContent))
                 {
-                    dynamicParameters.Add("@BlogContent",requestModel.BlogContent);
+                    dynamicParameters.Add("@BlogContent", requestModel.BlogContent);
                     conditions += "BlogContent = @BlogContent, ";
 
                 }
@@ -158,15 +160,15 @@ VALUES (@BlogTitle, @BlogAuthor, @BlogContent)";
                 string query = @$"UPDATE Tbl_Blog SET {conditions} WHERE BlogId = @BlogId";
 
                 using IDbConnection dbConnection = new SqlConnection(DbConfig.DbConnection);
-                int result = await dbConnection.ExecuteAsync(query,dynamicParameters);
+                int result = await dbConnection.ExecuteAsync(query, dynamicParameters);
 
                 return result > 0 ? Ok("Updating Successful!") : BadRequest("Updating Fail!");
 
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
-        
+
         }
 
-        
+
     }
 }
