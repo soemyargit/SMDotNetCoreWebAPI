@@ -23,9 +23,9 @@ namespace SMDotNetCoreADO.Controllers
             try
             {
                 string sqlQuery = BlogQuery.GetBlogListQuery;
-                List<BlogModel> lstBlogModel = new List<BlogModel>();
-                lstBlogModel = _aDOService.cmdExecReader(sqlQuery);
-                return Ok(lstBlogModel);
+                var lst = _aDOService.cmdExecReader(sqlQuery);
+
+                return Ok(lst);
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
