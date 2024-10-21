@@ -48,6 +48,7 @@ namespace SMDotNetCoreWebAPI.Services
             {
                 using IDbConnection dbConnection = GetSqlConnection();
                 int resultInt = await dbConnection.ExecuteAsync(query, parameters);
+
                 return resultInt;
             }
             catch (Exception ex) { throw; }
@@ -57,6 +58,7 @@ namespace SMDotNetCoreWebAPI.Services
 
         #region GetSqlConnection
         private SqlConnection GetSqlConnection() => new(DbConfig.DbConnection); //var SqlCon = new SqlConnection(DbConfig.DbConnection); return SqlCon; }
+
         #endregion
     }
 }
