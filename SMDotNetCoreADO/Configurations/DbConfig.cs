@@ -1,8 +1,7 @@
-﻿namespace SMDotNetCoreADO.Configurations
+﻿namespace SMDotNetCoreADO.Configurations;
+
+public class DbConfig
 {
-    public class DbConfig
-    {
-        public static string DbConnection { get; } =
-        @"Server=Soe\mssql;Database=testDb;User ID=sa;Password=sasa@123;TrustServerCertificate=True;";
-    }
+    public static string DbConnection { get; } =
+    @"Server=Soe\mssql;Database=testDb;User ID=sa;Password=sasa@123;TrustServerCertificate=True;";
 }
