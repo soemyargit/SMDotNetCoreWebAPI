@@ -26,13 +26,13 @@ namespace SMDotNetCoreWebAPI.Services
 
         #region Query First Or Default Async
 
-        public async Task<T> QueryFirstOrDefaultAsync<T>(string query,object? parameters = null, CommandType commandType = CommandType.Text)
+        public async Task<T?> QueryFirstOrDefaultAsync<T>(string query,object? parameters = null, CommandType commandType = CommandType.Text)
         {
             try 
             { 
                 using IDbConnection dbConnection = GetSqlConnection();
-                var itm = await dbConnection.QueryFirstOrDefaultAsync<T>(query, parameters, commandType: commandType); 
-                return itm;
+                var item = await dbConnection.QueryFirstOrDefaultAsync<T>(query, parameters, commandType: commandType); 
+                return item;
                 
             }
             catch(Exception ex) { throw; }  
@@ -58,6 +58,5 @@ namespace SMDotNetCoreWebAPI.Services
         #region GetSqlConnection
         private SqlConnection GetSqlConnection() => new(DbConfig.DbConnection); //var SqlCon = new SqlConnection(DbConfig.DbConnection); return SqlCon; }
         #endregion
-
     }
 }
