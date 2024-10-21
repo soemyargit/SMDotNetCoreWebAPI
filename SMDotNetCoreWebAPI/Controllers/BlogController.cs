@@ -39,12 +39,10 @@ FROM Tbl_Blog";
                 var lst = await db.QueryAsync<BlogModel>(query);
 
                 return Ok(lst.ToList());
-
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
-
             }
 
         }
