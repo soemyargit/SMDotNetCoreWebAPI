@@ -159,6 +159,9 @@ VALUES (@BlogTitle, @BlogAuthor, @BlogContent)";
 
             return result > 0 ? Ok("Updating Successful!") : BadRequest("Updating Fail!");
         }
-        catch (Exception ex) { throw new Exception(ex.Message); }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
     }
 }
