@@ -44,6 +44,7 @@ public class BlogController : ControllerBase
                 @$"SELECT BlogId, BlogTitle, BlogAuthor, BlogContent FROM Tbl_Blog WHERE BlogId = {id}";
             List<BlogModel> lstBlogModel = new List<BlogModel>();
             lstBlogModel = _aDOService.cmdExecReader(sqlQuery);
+
             return Ok(lstBlogModel);
         }
         catch (Exception ex)
