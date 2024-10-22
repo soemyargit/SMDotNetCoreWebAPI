@@ -4,7 +4,11 @@ public class AdoDotNetService
 {
     private SqlConnection GetSqlConnection() => new("");
 
-    public async Task<List<T>> QueryAsync<T>(string query, SqlParameter[]? parameters = null, CommandType commandType = CommandType.Text)
+    public async Task<List<T>> QueryAsync<T>(
+        string query,
+        SqlParameter[]? parameters = null,
+        CommandType commandType = CommandType.Text
+    )
     {
         try
         {
@@ -33,7 +37,11 @@ public class AdoDotNetService
         }
     }
 
-    public async Task<DataTable> QueryFirstOrDefaultAsync(string query, SqlParameter[]? parameters = null, CommandType commandType = CommandType.Text)
+    public async Task<DataTable> QueryFirstOrDefaultAsync(
+        string query,
+        SqlParameter[]? parameters = null,
+        CommandType commandType = CommandType.Text
+    )
     {
         try
         {
