@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SMDotNetCoreADO.Models;
-using SMDotNetCoreADO.Services;
-using SMDotNetCoreADO.Queries;
+﻿global using Microsoft.AspNetCore.Mvc;
+global using SMDotNetCoreADO.Models;
+global using SMDotNetCoreADO.Services;
+global using SMDotNetCoreADO.Queries;
 
 namespace SMDotNetCoreADO.Controllers
 {
