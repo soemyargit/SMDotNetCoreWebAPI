@@ -125,7 +125,7 @@ VALUES (@BlogTitle, @BlogAuthor, @BlogContent)";
         try
         {
             if (id <= 0)
-            { return BadRequest("Id is invalid!"); }
+                return BadRequest("Id is invalid!");
 
             DynamicParameters dynamicParameters = new DynamicParameters();
             dynamicParameters.Add("BlogId", id);
