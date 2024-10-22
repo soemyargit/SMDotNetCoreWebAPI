@@ -25,7 +25,10 @@ public class BlogController : ControllerBase
 
             return Ok(lst);
         }
-        catch (Exception ex) { throw new Exception(ex.Message); }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
     }
 
     #endregion
@@ -37,12 +40,16 @@ public class BlogController : ControllerBase
     {
         try
         {
-            string sqlQuery = @$"SELECT BlogId, BlogTitle, BlogAuthor, BlogContent FROM Tbl_Blog WHERE BlogId = {id}";
+            string sqlQuery =
+                @$"SELECT BlogId, BlogTitle, BlogAuthor, BlogContent FROM Tbl_Blog WHERE BlogId = {id}";
             List<BlogModel> lstBlogModel = new List<BlogModel>();
             lstBlogModel = _aDOService.cmdExecReader(sqlQuery);
             return Ok(lstBlogModel);
         }
-        catch (Exception ex) { throw new Exception(ex.Message); }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
     }
 
     #endregion
