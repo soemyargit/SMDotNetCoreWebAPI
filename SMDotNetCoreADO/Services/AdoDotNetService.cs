@@ -1,6 +1,6 @@
-﻿using Microsoft.Data.SqlClient;
-using Newtonsoft.Json;
-using System.Data;
+﻿global using Microsoft.Data.SqlClient;
+global using Newtonsoft.Json;
+global using System.Data;
 
 namespace SMDotNetCoreADO.Services;
 
