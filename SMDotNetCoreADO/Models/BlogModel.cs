@@ -1,10 +1,9 @@
-﻿namespace SMDotNetCoreADO.Models
+﻿namespace SMDotNetCoreADO.Models;
+
+public class BlogModel
 {
-    public class BlogModel
-    {
-        public int BlogId { get; set; }
-        public string BlogTitle { get; set; }
-        public string BlogAuthor { get; set; }
-        public string BlogContent { get; set; }
-    }
+    public int BlogId { get; set; }
+    public string BlogTitle { get; set; }
+    public string BlogAuthor { get; set; }
+    public string BlogContent { get; set; }
 }
