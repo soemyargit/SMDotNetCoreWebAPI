@@ -1,12 +1,9 @@
 ﻿using Dapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SMDotNetCoreWebAPI.Models;
 using SMDotNetCoreWebAPI.Configurations;
 using System.Data;
 using System.Data.SqlClient;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Runtime.Intrinsics.X86;
 
 namespace SMDotNetCoreWebAPI.Controllers
 {
